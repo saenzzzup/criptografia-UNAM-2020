@@ -18,13 +18,13 @@ class BifidCipher:
     def decrypt(self, c):
         numbers = self.str_to_num(c)
         new_numbers = ''
-        j = len(numbers) / 2
+        j = len(numbers) // 2
         for i in range(j):
             new_numbers += (numbers[i] + numbers[j+i])
         return self.num_to_str(c)
 
     def num_to_str(self, m):
-        j = len(m) / 2
+        j = len(m) // 2
         new_txt = ''
         for i in range(0, j, 2):
             new_txt +=  self.key_num[int(m[i])][int(m[i+1])]
