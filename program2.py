@@ -21,7 +21,7 @@ class BifidCipher:
         j = len(numbers) // 2
         for i in range(j):
             new_numbers += (numbers[i] + numbers[j+i])
-        return self.num_to_str(c)
+        return self.num_to_str(new_numbers)
 
     def num_to_str(self, m):
         j = len(m) // 2
