@@ -50,7 +50,7 @@ lines = [line for line in fileinput.input()]
 bifidCipher = BifidCipher()
 solution = ''
 
-if lines[0] == 'ENCRYPT':
+if lines[0].strip() == 'ENCRYPT':
     solution = bifidCipher.encrypt(lines[1])
 else :
     solution = bifidCipher.decrypt(lines[1])
