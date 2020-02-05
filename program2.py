@@ -11,20 +11,23 @@ class BifidCipher:
     ]
 
     def encrypt(self, m):
-        m.replace(" ", "")
+        m = m.replace(" ", "")
         numbers = self.str_to_num(m)
         return self.num_to_str(numbers)
 
     def decrypt(self, c):
         numbers = self.str_to_num(c)
-        new_numbers = ''
         j = len(numbers) // 2
+        new_numbers = ''
         for i in range(j):
             new_numbers += (numbers[i] + numbers[j+i])
-        return self.num_to_str(new_numbers)
+        new_numbers_two = ''
+        for i in range(j):
+            new_numbers_two += (new_numbers[i] + new_numbers[j+i])
+        return self.num_to_str(new_numbers_two)
 
     def num_to_str(self, m):
-        j = len(m) // 2
+        j = len(m)
         new_txt = ''
         for i in range(0, j, 2):
             new_txt +=  self.key_num[int(m[i])][int(m[i+1])]
@@ -36,8 +39,8 @@ class BifidCipher:
         for letter in m:
             for i in range(5):
                 try:
-                    top_num += str(i)
                     bottom_num += str(self.key_num[i].index(letter))
+                    top_num += str(i)
                 except:
                     pass
         return top_num + bottom_num
