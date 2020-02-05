@@ -28,7 +28,7 @@ class BifidCipher:
         new_txt = ''
         for i in range(0, j, 2):
             new_txt +=  self.key_num[int(m[i])][int(m[i+1])]
-        pass
+        return new_txt
 
     def str_to_num(self, m):
         top_num = ''
