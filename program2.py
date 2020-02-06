@@ -1,3 +1,9 @@
+'''
+    File name: programa2.py
+    Author: Ricardo Sáenz Barragán
+    Date created: 02/06/2020
+    Python Version: 3.7.0
+'''
 import fileinput
 
 class BifidCipher:
@@ -10,15 +16,18 @@ class BifidCipher:
         ['U', 'V', 'W', 'X', 'Z'],
     ]
 
+    # Encriptación del mensaje, recibe string de mensaje. Regresa texto ilegible
     def encrypt(self, m):
         m = m.replace(" ", "")
         numbers = self.str_to_num(m)
         return self.num_to_str(numbers)
 
+    # Des-enriptación del mensaje, recibe string de mensaje. Regresa texto legible
     def decrypt(self, c):
         numbers = self.str_to_num(c)
         j = len(numbers) // 2
         new_numbers = ''
+        # Re-ordenar las coordenadas/números para la traducción.
         for i in range(j):
             new_numbers += (numbers[i] + numbers[j+i])
         new_numbers_two = ''
@@ -26,6 +35,7 @@ class BifidCipher:
             new_numbers_two += (new_numbers[i] + new_numbers[j+i])
         return self.num_to_str(new_numbers_two)
 
+    # Transforma Coordenadas a Letras
     def num_to_str(self, m):
         j = len(m)
         new_txt = ''
@@ -33,6 +43,7 @@ class BifidCipher:
             new_txt +=  self.key_num[int(m[i])][int(m[i+1])]
         return new_txt
 
+    # Transforma Letras a Coordenadas
     def str_to_num(self, m):
         top_num = ''
         bottom_num = ''
